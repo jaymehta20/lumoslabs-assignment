@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
 import { MdGroup, MdLocationPin } from 'react-icons/md';
 import { BiFilterAlt } from 'react-icons/bi';
+import { RxCrossCircled } from 'react-icons/rx';
 import { useState } from 'react';
 
 export default function Home() {
@@ -79,7 +80,14 @@ export default function Home() {
           />
           {isFilterOpen ? (
             <div className="outline outline-[#6031F5] absolute bottom-0 right-20 py-4 px-5 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white">
-              <p className="text-xl my-2">Filter</p>
+              <div className="flex justify-between items-center">
+                <p className="text-xl my-2">Filter</p>
+                <RxCrossCircled
+                  size="25"
+                  className="text-[#16DBF8] cursor-pointer"
+                  onClick={() => setIsFilterOpen(!isFilterOpen)}
+                />
+              </div>
               <hr />
               <p className="text-lg my-2">Hosts</p>
               <div className="flex flex-col gap-2 align-middle">
