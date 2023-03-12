@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
+import Slider from './slider';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
 import { MdGroup, MdLocationPin } from 'react-icons/md';
 import { BiFilterAlt } from 'react-icons/bi';
@@ -29,48 +30,7 @@ export default function Home() {
         </div>
 
         {/* Cards Section */}
-        <div className="my-8 flex justify-center">
-          <div className="bg-gradient-to-r from-[#FF04C8] via-[#FFFFFF] to-[#0038FF] rounded-xl p-1">
-            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white max-w-[500px]">
-              <Image
-                src="/image/dev.jpg"
-                width={500}
-                height={100}
-                quality={100}
-                alt="Dev Media"
-                className="rounded-md"
-              />
-              <div className="flex align-middle my-4 justify-between">
-                <p className="text-xl font-sans">Dev media web3 conference</p>
-                <p className="flex gap-2 align-middle text-lg font-light">
-                  <MdGroup size="25" /> 200/500
-                </p>
-              </div>
-              <div className="flex gap-2 align-middle text-md font-sans">
-                <MdLocationPin size="20" />
-                <p>Global centre for conference</p>
-              </div>
-              <div className="flex align-middle my-4 gap-8">
-                <p className="flex align-middle gap-2 text-sm font-sans my-2">
-                  <AiOutlineCalendar size="20" /> 31-08-2022
-                </p>
-                <p className="flex align-middle gap-2 text-sm font-sans my-2">
-                  <AiOutlineClockCircle size="20" /> 6:00 PM IST
-                </p>
-              </div>
-              <p className="opacity-50">
-                Web3 development course for starters. Join the course now and
-                avail 50 coins on your wallet.
-              </p>
-              <div className="flex justify-center mt-4">
-                <button className="text-lg py-1 px-6 bg-gradient-to-r from-[#2BF2FF] to-[#04C6F2] text-black rounded-md">
-                  Register
-                </button>
-              </div>
-            </article>
-          </div>
-        </div>
-
+        <Slider />
         {/* Filter Button Section */}
         <div className="relative text-[#2BF2FF] flex justify-end mr-10 mt-20">
           <BiFilterAlt
@@ -131,4 +91,204 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+{
+  /* <div className="my-8 flex justify-center">
+          <div className="bg-gradient-to-r from-[#FF04C8] via-[#FFFFFF] to-[#0038FF] rounded-xl p-1 translate-x-64 z-30">
+            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white max-w-[500px]">
+              <Image
+                src="/image/dev.jpg"
+                width={500}
+                height={100}
+                quality={100}
+                alt="Dev Media"
+                className="rounded-md"
+              />
+              <div className="flex align-middle my-4 justify-between">
+                <p className="text-xl font-sans">Dev media web3 conference</p>
+                <p className="flex gap-2 align-middle text-lg font-light">
+                  <MdGroup size="25" /> 200/500
+                </p>
+              </div>
+              <div className="flex gap-2 align-middle text-md font-sans">
+                <MdLocationPin size="20" />
+                <p>Global centre for conference</p>
+              </div>
+              <div className="flex align-middle my-4 gap-8">
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineCalendar size="20" /> 31-08-2022
+                </p>
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineClockCircle size="20" /> 6:00 PM IST
+                </p>
+              </div>
+              <p className="opacity-50">
+                Web3 development course for starters. Join the course now and
+                avail 50 coins on your wallet.
+              </p>
+              <div className="flex justify-center mt-4">
+                <button className="text-lg py-1 px-6 bg-gradient-to-r from-[#2BF2FF] to-[#04C6F2] text-black rounded-md">
+                  Register
+                </button>
+              </div>
+            </article>
+          </div>
+          <div className="bg-gradient-to-r from-[#FF04C8] via-[#FFFFFF] to-[#0038FF] rounded-xl p-1 translate-x-16 z-40">
+            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white max-w-[500px]">
+              <Image
+                src="/image/dev.jpg"
+                width={500}
+                height={100}
+                quality={100}
+                alt="Dev Media"
+                className="rounded-md"
+              />
+              <div className="flex align-middle my-4 justify-between">
+                <p className="text-xl font-sans">Dev media web3 conference</p>
+                <p className="flex gap-2 align-middle text-lg font-light">
+                  <MdGroup size="25" /> 200/500
+                </p>
+              </div>
+              <div className="flex gap-2 align-middle text-md font-sans">
+                <MdLocationPin size="20" />
+                <p>Global centre for conference</p>
+              </div>
+              <div className="flex align-middle my-4 gap-8">
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineCalendar size="20" /> 31-08-2022
+                </p>
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineClockCircle size="20" /> 6:00 PM IST
+                </p>
+              </div>
+              <p className="opacity-50">
+                Web3 development course for starters. Join the course now and
+                avail 50 coins on your wallet.
+              </p>
+              <div className="flex justify-center mt-4">
+                <button className="text-lg py-1 px-6 bg-gradient-to-r from-[#2BF2FF] to-[#04C6F2] text-black rounded-md">
+                  Register
+                </button>
+              </div>
+            </article>
+          </div>
+          <div className="bg-gradient-to-r from-[#FF04C8] via-[#FFFFFF] to-[#0038FF] rounded-xl p-1 z-50">
+            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white max-w-[500px]">
+              <Image
+                src="/image/dev.jpg"
+                width={500}
+                height={100}
+                quality={100}
+                alt="Dev Media"
+                className="rounded-md"
+              />
+              <div className="flex align-middle my-4 justify-between">
+                <p className="text-xl font-sans">Dev media web3 conference</p>
+                <p className="flex gap-2 align-middle text-lg font-light">
+                  <MdGroup size="25" /> 200/500
+                </p>
+              </div>
+              <div className="flex gap-2 align-middle text-md font-sans">
+                <MdLocationPin size="20" />
+                <p>Global centre for conference</p>
+              </div>
+              <div className="flex align-middle my-4 gap-8">
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineCalendar size="20" /> 31-08-2022
+                </p>
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineClockCircle size="20" /> 6:00 PM IST
+                </p>
+              </div>
+              <p className="opacity-50">
+                Web3 development course for starters. Join the course now and
+                avail 50 coins on your wallet.
+              </p>
+              <div className="flex justify-center mt-4">
+                <button className="text-lg py-1 px-6 bg-gradient-to-r from-[#2BF2FF] to-[#04C6F2] text-black rounded-md">
+                  Register
+                </button>
+              </div>
+            </article>
+          </div>
+          <div className="bg-gradient-to-r from-[#FF04C8] via-[#FFFFFF] to-[#0038FF] rounded-xl p-1 -translate-x-16 z-20">
+            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white max-w-[500px]">
+              <Image
+                src="/image/dev.jpg"
+                width={500}
+                height={100}
+                quality={100}
+                alt="Dev Media"
+                className="rounded-md"
+              />
+              <div className="flex align-middle my-4 justify-between">
+                <p className="text-xl font-sans">Dev media web3 conference</p>
+                <p className="flex gap-2 align-middle text-lg font-light">
+                  <MdGroup size="25" /> 200/500
+                </p>
+              </div>
+              <div className="flex gap-2 align-middle text-md font-sans">
+                <MdLocationPin size="20" />
+                <p>Global centre for conference</p>
+              </div>
+              <div className="flex align-middle my-4 gap-8">
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineCalendar size="20" /> 31-08-2022
+                </p>
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineClockCircle size="20" /> 6:00 PM IST
+                </p>
+              </div>
+              <p className="opacity-50">
+                Web3 development course for starters. Join the course now and
+                avail 50 coins on your wallet.
+              </p>
+              <div className="flex justify-center mt-4">
+                <button className="text-lg py-1 px-6 bg-gradient-to-r from-[#2BF2FF] to-[#04C6F2] text-black rounded-md">
+                  Register
+                </button>
+              </div>
+            </article>
+          </div>
+          <div className="bg-gradient-to-r from-[#FF04C8] via-[#FFFFFF] to-[#0038FF] rounded-xl p-1 -translate-x-64 z-10">
+            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white max-w-[500px]">
+              <Image
+                src="/image/dev.jpg"
+                width={500}
+                height={100}
+                quality={100}
+                alt="Dev Media"
+                className="rounded-md"
+              />
+              <div className="flex align-middle my-4 justify-between">
+                <p className="text-xl font-sans">Dev media web3 conference</p>
+                <p className="flex gap-2 align-middle text-lg font-light">
+                  <MdGroup size="25" /> 200/500
+                </p>
+              </div>
+              <div className="flex gap-2 align-middle text-md font-sans">
+                <MdLocationPin size="20" />
+                <p>Global centre for conference</p>
+              </div>
+              <div className="flex align-middle my-4 gap-8">
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineCalendar size="20" /> 31-08-2022
+                </p>
+                <p className="flex align-middle gap-2 text-sm font-sans my-2">
+                  <AiOutlineClockCircle size="20" /> 6:00 PM IST
+                </p>
+              </div>
+              <p className="opacity-50">
+                Web3 development course for starters. Join the course now and
+                avail 50 coins on your wallet.
+              </p>
+              <div className="flex justify-center mt-4">
+                <button className="text-lg py-1 px-6 bg-gradient-to-r from-[#2BF2FF] to-[#04C6F2] text-black rounded-md">
+                  Register
+                </button>
+              </div>
+            </article>
+          </div>
+        </div> */
 }
