@@ -4,8 +4,11 @@ import Image from 'next/image';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
 import { MdGroup, MdLocationPin } from 'react-icons/md';
 import { BiFilterAlt } from 'react-icons/bi';
+import { useState } from 'react';
 
 export default function Home() {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -14,13 +17,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className=" h-[90vh] my-8">
-        <h1 className="text-4xl text-center text-white">
-          Lumos Lab Assignment
-        </h1>
+      <main className="h-[92vh] my-8">
+        {/* Event Bubble Section */}
+        <div className="flex justify-center my-4">
+          <div className="outline outline-[#6031F5] flex justify-center bg-[#181818] w-[1000px] rounded-3xl py-2">
+            <h4 className="bg-gradient-to-r from-[#892DFC] to-[#1C37EA] text-white py-2 px-9 text-lg rounded-3xl">
+              Event
+            </h4>
+          </div>
+        </div>
+
+        {/* Cards Section */}
         <div className="my-8 flex justify-center">
           <div className="bg-gradient-to-r from-[#FF04C8] via-[#FFFFFF] to-[#0038FF] rounded-xl p-1">
-            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white w-[500px]">
+            <article className="p-4 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white max-w-[500px]">
               <Image
                 src="/image/dev.jpg"
                 width={500}
@@ -59,11 +69,56 @@ export default function Home() {
             </article>
           </div>
         </div>
-        <div className="text-[#2BF2FF] flex justify-end mr-10 mt-20">
+
+        {/* Filter Button Section */}
+        <div className="relative text-[#2BF2FF] flex justify-end mr-10 mt-20">
           <BiFilterAlt
             size="50"
-            className="outline outline-[#3157E0] rounded-full p-3 bg-[#181818] cursor-pointer"
+            className=" outline outline-[#3157E0] rounded-full p-3 bg-[#181818] cursor-pointer"
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
           />
+          {isFilterOpen ? (
+            <div className="outline outline-[#6031F5] absolute bottom-0 right-20 py-4 px-5 rounded-xl bg-gradient-to-r from-[#14011f] to-[#010138] text-white">
+              <p className="text-xl my-2">Filter</p>
+              <hr />
+              <p className="text-lg my-2">Hosts</p>
+              <div className="flex flex-col gap-2 align-middle">
+                <div className="flex gap-4 justify-between items-center">
+                  <label htmlFor="web3house" className="text-lg text-[#16DBF8]">
+                    Web3 House
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="web3house"
+                    id="web3house"
+                    className="accent-[#04C6F2] cursor-pointer h-4 w-4"
+                  />
+                </div>
+                <div className="flex gap-4 justify-between items-center">
+                  <label htmlFor="learnweb3" className="text-lg text-[#16DBF8]">
+                    Learn Web3
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="learnweb3"
+                    id="learnweb3"
+                    className="accent-[#04C6F2] cursor-pointer h-4 w-4"
+                  />
+                </div>
+                <div className="flex gap-4 justify-between items-center">
+                  <label htmlFor="hirehouse" className="text-lg text-[#16DBF8]">
+                    Hire House
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="hirehouse"
+                    id="hirehouse"
+                    className="accent-[#04C6F2] cursor-pointer h-4 w-4"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
       </main>
     </>
