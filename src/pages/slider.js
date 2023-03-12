@@ -12,59 +12,7 @@ import Image from 'next/image';
 import { MdGroup, MdLocationPin } from 'react-icons/md';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
 
-const Slider = () => {
-  const cards = [
-    {
-      title: 'Dev media web3 conference',
-      date: '31-08-2022',
-      time: '6:00 PM IST',
-      location: 'Global centre for conference',
-      description:
-        'Web3 development course for starters. Join the course now and avail 50 coins on your wallet.',
-      image: '/image/dev.jpg',
-      capacity: '200/500',
-    },
-    {
-      title: 'Dev media web3 conference',
-      date: '31-08-2022',
-      time: '6:00 PM IST',
-      location: 'Global centre for conference',
-      description:
-        'Web3 development course for starters. Join the course now and avail 50 coins on your wallet.',
-      image: '/image/dev.jpg',
-      capacity: '200/500',
-    },
-    {
-      title: 'Dev media web3 conference',
-      date: '31-08-2022',
-      time: '6:00 PM IST',
-      location: 'Global centre for conference',
-      description:
-        'Web3 development course for starters. Join the course now and avail 50 coins on your wallet.',
-      image: '/image/dev.jpg',
-      capacity: '200/500',
-    },
-    {
-      title: 'Dev media web3 conference',
-      date: '31-08-2022',
-      time: '6:00 PM IST',
-      location: 'Global centre for conference',
-      description:
-        'Web3 development course for starters. Join the course now and avail 50 coins on your wallet.',
-      image: '/image/dev.jpg',
-      capacity: '200/500',
-    },
-    {
-      title: 'Dev media web3 conference',
-      date: '31-08-2022',
-      time: '6:00 PM IST',
-      location: 'Global centre for conference',
-      description:
-        'Web3 development course for starters. Join the course now and avail 50 coins on your wallet.',
-      image: '/image/dev.jpg',
-      capacity: '200/500',
-    },
-  ];
+const Slider = ({ filterCards }) => {
   return (
     <Swiper
       effect={'coverflow'}
@@ -72,6 +20,7 @@ const Slider = () => {
       centeredSlides={true}
       spaceBetween={-400}
       slidesPerView={5}
+      initialSlide={filterCards.length > 0 ? Number(filterCards.length / 2) : 0}
       coverflowEffect={{
         rotate: 0,
         stretch: 0,
@@ -83,7 +32,7 @@ const Slider = () => {
       modules={[EffectCoverflow, Pagination]}
       className="mySwiper my-auto py-10"
     >
-      {cards.map((card) => {
+      {filterCards.map((card) => {
         return (
           <SwiperSlide
             key={card}

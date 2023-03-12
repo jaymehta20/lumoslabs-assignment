@@ -6,10 +6,96 @@ import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
 import { MdGroup, MdLocationPin } from 'react-icons/md';
 import { BiFilterAlt } from 'react-icons/bi';
 import { RxCrossCircled } from 'react-icons/rx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const cards = [
+  {
+    title: 'Dev media web3 conference',
+    date: '31-08-2022',
+    time: '6:00 PM IST',
+    location: 'Global centre for conference',
+    description:
+      'Web3 development course for starters. Join the course now and avail 50 coins on your wallet.',
+    image: '/image/dev.jpg',
+    capacity: '200/500',
+    host: 'web3house',
+  },
+  {
+    title: 'Intro to Machine Learning',
+    date: '15-06-2022',
+    time: '2:00 PM EST',
+    location: 'Online',
+    description:
+      'Learn the basics of machine learning and how to apply it to real-world problems. No prior experience required!',
+    image: '/image/polygon.jpg',
+    capacity: '100/100',
+    host: 'learnweb3',
+  },
+  {
+    title: 'UX Design Workshop',
+    date: '22-07-2022',
+    time: '9:00 AM PST',
+    location: 'San Francisco, CA',
+    description:
+      'Join us for a hands-on workshop on user experience design. Learn the principles and practices of creating effective user interfaces.',
+    image: '/image/metaverse.jpg',
+    capacity: '50/50',
+    host: 'hirehouse',
+  },
+  {
+    title: 'Product Management Summit',
+    date: '05-09-2022',
+    time: '10:00 AM GMT',
+    location: 'London, UK',
+    description:
+      'Join industry leaders and experts in product management to learn about the latest trends and best practices in the field.',
+    image: '/image/dev.jpg',
+    capacity: '300/500',
+    host: 'web3house',
+  },
+  {
+    title: 'Data Science Bootcamp',
+    date: '12-10-2022',
+    time: '8:00 AM EST',
+    location: 'New York, NY',
+    description:
+      'Get hands-on experience with data science tools and techniques in this intensive bootcamp. No prior experience required!',
+    image: '/image/polygon.jpg',
+    capacity: '20/50',
+    host: 'learnweb3',
+  },
+];
 
 export default function Home() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [filter, setFilter] = useState([]);
+  const [filterCards, setFilterCards] = useState(cards);
+
+  const onClickHandler = (e) => {
+    const { value, name } = e.target;
+    if (filter.includes(name)) {
+      // Remove the name element from the filter array
+      setFilter((prevFilter) => prevFilter.filter((item) => item !== name));
+    } else {
+      // Add the name element to the filter array
+      setFilter((prevFilter) => [...prevFilter, name.toLowerCase()]);
+    }
+  };
+
+  console.log(filter, 'FLTER');
+
+  useEffect(() => {
+    if (!filter.length) {
+      setFilterCards(cards);
+      return;
+    }
+    let newArr = [];
+    filter.forEach((inst) => {
+      const filterArr = cards.filter((innerInst) => innerInst.host === inst);
+      newArr = [...newArr, ...filterArr];
+    });
+    setFilterCards(newArr);
+  }, [filter]);
 
   return (
     <>
@@ -30,9 +116,9 @@ export default function Home() {
         </div>
 
         {/* Cards Section */}
-        <Slider />
+        <Slider filterCards={filterCards} />
         {/* Filter Button Section */}
-        <div className="relative text-[#2BF2FF] flex justify-end mr-10 mt-20">
+        <div className="relative z-50 text-[#2BF2FF] flex justify-end mr-10 mt-20">
           <BiFilterAlt
             size="50"
             className=" outline outline-[#3157E0] rounded-full p-3 bg-[#181818] cursor-pointer"
@@ -60,6 +146,7 @@ export default function Home() {
                     name="web3house"
                     id="web3house"
                     className="accent-[#04C6F2] cursor-pointer h-4 w-4"
+                    onClick={onClickHandler}
                   />
                 </div>
                 <div className="flex gap-4 justify-between items-center">
@@ -71,6 +158,7 @@ export default function Home() {
                     name="learnweb3"
                     id="learnweb3"
                     className="accent-[#04C6F2] cursor-pointer h-4 w-4"
+                    onClick={onClickHandler}
                   />
                 </div>
                 <div className="flex gap-4 justify-between items-center">
@@ -82,6 +170,7 @@ export default function Home() {
                     name="hirehouse"
                     id="hirehouse"
                     className="accent-[#04C6F2] cursor-pointer h-4 w-4"
+                    onClick={onClickHandler}
                   />
                 </div>
               </div>
