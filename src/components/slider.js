@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/navigation';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -20,7 +19,9 @@ const Slider = ({ filterCards }) => {
       centeredSlides={true}
       spaceBetween={-400}
       slidesPerView={5}
-      initialSlide={filterCards.length > 0 ? Number(filterCards.length / 2) : 0}
+      initialSlide={
+        filterCards?.length > 0 ? Number(filterCards?.length / 2) : 0
+      }
       coverflowEffect={{
         rotate: 0,
         stretch: 0,

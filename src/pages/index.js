@@ -1,9 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
 
-import Slider from './slider';
-import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
-import { MdGroup, MdLocationPin } from 'react-icons/md';
+import Slider from '../components/slider';
 import { BiFilterAlt } from 'react-icons/bi';
 import { RxCrossCircled } from 'react-icons/rx';
 import { useEffect, useState } from 'react';
@@ -72,7 +69,7 @@ export default function Home() {
   const [filterCards, setFilterCards] = useState(cards);
 
   const onClickHandler = (e) => {
-    const { value, name } = e.target;
+    const { name } = e.target;
     if (filter.includes(name)) {
       // Remove the name element from the filter array
       setFilter((prevFilter) => prevFilter.filter((item) => item !== name));
@@ -82,10 +79,8 @@ export default function Home() {
     }
   };
 
-  console.log(filter, 'FLTER');
-
   useEffect(() => {
-    if (!filter.length) {
+    if (!filter?.length) {
       setFilterCards(cards);
       return;
     }
