@@ -80,7 +80,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (filter?.length) {
+    if (!filter?.length) {
       setFilterCards(cards);
       return;
     }
