@@ -113,7 +113,7 @@ export default function Home() {
         {/* Cards Section */}
         <Slider filterCards={filterCards} />
         {/* Filter Button Section */}
-        <div className="relative z-50 text-[#2BF2FF] flex justify-end mr-10 mt-20">
+        <div className="relative z-50 text-[#2BF2FF] flex justify-end mr-10">
           <BiFilterAlt
             size="50"
             className=" outline outline-[#3157E0] rounded-full p-3 bg-[#181818] cursor-pointer"
